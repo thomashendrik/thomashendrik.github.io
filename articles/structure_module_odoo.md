@@ -1,6 +1,7 @@
 # Structure d'un module Odoo
 
 **Note :** Je développe sur la version 12 de Odoo, il se peut que votre version présente quelques différences. 
+
 **Objectif :** Créer un premier module, disponible dans la librairie d'applications.
 
 Bonjour à toutes et à tous,
@@ -27,7 +28,9 @@ La seconde étape, c’est de créer un répertoire à l’intérieur du répert
 le fichier __init__.py 
 le fichier __manifest__.py
 
-Dans le fichier init, on va retrouver les imports  des fichiers python de notre module. Cette partie sera vue dans un tutoriel suivant donc pour l’instant on va juste créer un fichier vide. Le fichier manifest lui contient toutes les informations relatives à notre module, à savoir son nom, une description, des informations sur la version, les dépendances utilisées et les vues que l’on souhaite utiliser. 
+Dans le fichier init, on va retrouver les imports  des fichiers python de notre module. Cette partie sera vue dans un tutoriel suivant donc pour l’instant on va juste créer un fichier vide. 
+
+Le fichier manifest lui contient toutes les informations relatives à notre module, à savoir son nom, une description, des informations sur la version, les dépendances utilisées et les vues que l’on souhaite utiliser. 
 
 C’est basiquement un fichier json avec plusieurs clés, certaines sont obligatoires et d’autres pas forcément indispensables, mais pour les besoins du tutoriel on va se contenter des plus importantes à savoir : 
 un nom
@@ -35,10 +38,31 @@ une description
 les dépendances 
 et on va lui dire que c’est une application.
 
-Plus tard nous verrons l’importation de vues qui seront obligatoires, mais je vous laisser consulter la liste en allant sur le lien qui s’affiche à l’écran. 
+Structure du fichier __manifest__.py
+```
+{
+    'name': "Module d'assistance",
+    'description': """
+        Notre module de support technique
+    """,
+
+    'author': "Thomas Brouwer",
+    'version': '0.1',
+
+    'depends': ['base'],
+
+    'data': [
+    ],
+    'application': True
+}
+```
+
+Plus tard nous verrons l’importation de vues qui seront obligatoires, mais je vous laisser consulter la liste en allant sur [la documentation officielle](https://www.odoo.com/documentation/12.0/reference/module.html). 
 
 Une fois ce fichier créé, notre module est opérationnel et prêt à être reconnu par Odoo. 
-On va donc lancer notre instance, puis une fois connecté on va se mettre en mode développeur en allant dans les paramètres, puis en cliquant sur activer … 
+On va donc lancer notre instance, puis une fois connecté on va se mettre en mode développeur en allant dans les paramètres, puis en cliquant sur "activer le mode développeur" en bas à droite. 
+
+![alt text](https://raw.githubusercontent.com/yakoso/blog/master/medias/Screenshot_2020-06-10%20Tableau%20de%20bord%20-%20Odoo(1).png "Tableau de bord Odoo")
 
 On doit désormais aller dans Applications, puis mettre à jour la liste des applications pour qu’Odoo scan les répertoires qui ont été mis dans le fichier de configuration. Une fois la liste à jour, on voit que notre module est disponible, et on peut l’installer en cliquant sur “Installer”. 
 
